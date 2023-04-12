@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Nueva Nota</h1>
+<div mat-dialog-content>
+    
+</div>
+<form class="text text-center" [formGroup]="myForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Titulo</mat-label>
+        <input matInput type="text" formControlName="titulo" autocomplete="off" name="name" />      
+        <mat-error *ngIf="myForm.get('titulo')?.touched && myForm.get('titulo')?.errors?.['required']">el campo esta vacío</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Contenido</mat-label>
+        <textarea matInput type="text" formControlName="contenido" autocomplete="off" name="contenido"></textarea>      
+        <mat-error *ngIf="myForm.get('contenido')?.touched && myForm.get('contenido')?.errors?.['required']">el campo esta vacío</mat-error>
+      </mat-form-field>
+      <div mat-dialog-actions>
+        <button mat-button (click)="cerrarDialogo()">No</button>
+        <button mat-button   (click)="confirmado()" [disabled]="myForm.invalid" cdkFocusInitial>Sí</button>
+    </div>
+    </form>
+    
+

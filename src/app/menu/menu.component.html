@@ -1,0 +1,10 @@
+<mat-toolbar color="primary"> 
+
+    <span style="margin-left: 10px;"> <a class="navbar-brand" routerLink="/"><i class="fa-sharp fa-solid fa-clipboard"></i> PONDE THE NOTE</a></span> 
+  <span class="example-spacer"></span>
+    <span > 
+      <a *ngIf="userService.isLoggedIn()" (click)="logout()" 
+      class="navbar-brand" routerLink="/"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+      </a>
+  </span> 
+</mat-toolbar>

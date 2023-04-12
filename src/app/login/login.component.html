@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-content>
+    <div>
+      <img src="./assets/imagenes/logo-notas-app.png">
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="iniciarSesion()">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input  matInput type="email" formControlName="email">
+        <mat-icon matTextSuffix>account_circle</mat-icon>
+        <mat-error  *ngIf="myForm.get('email')?.touched && myForm.get('email')?.errors?.['email']">your email is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" >
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error  *ngIf="myForm.get('password')?.touched && myForm.get('password')?.errors?.['required']">your email is required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button style="background-color:#FF5A5F; color: white;" [disabled]="myForm.invalid">Ingresar</button>
+    </form>
+    <div class="row">
+      <div class="col">
+          <mat-label>¿Aún no te has registrado? </mat-label>
+              <a href="/register" style="color: #3F51B5;">Regístrate aquí</a>
+      </div>
+  </div>
+  </mat-card-content>
+</mat-card>

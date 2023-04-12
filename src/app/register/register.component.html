@@ -1,0 +1,78 @@
+<mat-card>
+  <mat-card-content>
+<form [formGroup]="myForm" (ngSubmit)="guardarUsuario()">
+  <div class="logo-imagen">
+    <img src="./assets/imagenes/nota-adhesiva.png" />
+  </div>
+
+  <!-- NOMBRE -->
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your name</mat-label>
+    <input matInput type="text" formControlName="name" autocomplete="off" name="name" />      
+    <mat-error *ngIf="myForm.get('name')?.touched && myForm.get('name')?.errors?.['required']">Your name is required</mat-error>
+  </mat-form-field>
+
+  <!-- APELLIDO -->
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your last name</mat-label>
+    <input matInput type="text" formControlName="lastName" autocomplete="off" />
+    <mat-error *ngIf="myForm.get('lastName')?.touched && myForm.get('lastName')?.errors?.['required']">Your name is required</mat-error>
+  </mat-form-field>
+
+  <!-- USERNAME -->
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your username</mat-label>
+    <mat-icon matTextSuffix>face</mat-icon>
+    <input matInput type="text" formControlName="username" autocomplete="off" />
+    <mat-error *ngIf="myForm.get('username')?.touched && myForm.get('username')?.errors?.['required']">Your name is required</mat-error>
+  </mat-form-field>
+
+  <!-- EMAIL -->
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput type="email" autocomplete="off" formControlName="email" name="email" placeholder="example@gmail.com" />
+    <mat-icon matTextSuffix>alternate_email</mat-icon>
+    <mat-error *ngIf="myForm.get('email')?.touched && myForm.get('email')?.errors?.['required']">Your lastname email</mat-error>
+  </mat-form-field>
+  <!--  CEL-->
+  <mat-form-field class="example-full-width">
+    <mat-label>Cel</mat-label>
+    <span matPrefix>+51 &nbsp;</span>
+    <input type="tel" matInput formControlName="cel" placeholder="999-999-999" maxlength="9" minlength="9">
+    <mat-icon matTextSuffix=""> cell</mat-icon>
+    <mat-error *ngIf="myForm.get('cel')?.touched && myForm.get('cel')?.errors?.['required']">Your cell is required</mat-error>
+  </mat-form-field>
+  <!-- DNI -->
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your DNI</mat-label>
+    <input matInput type="text" formControlName="dni" autocomplete="off" maxlength="8" minlength="8" />
+    <mat-error *ngIf="myForm.get('dni')?.touched && myForm.get('dni')?.errors?.['required']">Your DNI is required</mat-error>
+  </mat-form-field>
+  <!-- CONTRASEÑA -->
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off" />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+    <mat-error *ngIf="myForm.get('password')?.touched && myForm.get('password')?.errors?.['required']">Your password is required</mat-error>
+  </mat-form-field>
+  <!-- buttOn -->
+  <button mat-raised-button  style="background-color: #ff5a5f; color: white" [disabled]="myForm.invalid">
+    Ingresar
+  </button>
+  <div class="row">
+    <div class="col">
+      <mat-label>¿Ya tienes una cuenta? </mat-label>
+      <a routerLink="/" style="color: #3f51b5">Iniciar Sesión</a>
+    </div>
+  </div>
+</form>
+  </mat-card-content>
+</mat-card>

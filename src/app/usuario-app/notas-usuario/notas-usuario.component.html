@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <mat-label><h2>Mis Notas</h2></mat-label>
+      </div>
+      <!-- BOTON AGREGAR NOTA -->
+      <div class="col text-center" style="text-align: right!important;">
+        <button mat-mini-fab color="accent"  (click)="mostrarDialogo()" aria-label="Example icon button with a plus one icon">
+          <mat-icon>plus_one</mat-icon>
+        </button>
+      </div>
+      <!-- MODAL -->
+    </div>
+  </div>
+  <!-- ESTA PENDIENTE TRAER DATA DEL API *NGFOR -->
+  <!-- <div class="container"> -->
+  <div class="row">
+    <div *ngFor="let nota of notas" class="col-lg-3 col-md-6 col-sm-12">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-subtitle>{{ nota.titulo }}</mat-card-subtitle>
+          <mat-card-title>{{ nota.titulo }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>This card has divider and indeterminate progress as footer</p>
+          <p>{{ nota.contenido }}</p>
+          <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="example-button-row">
+            <button mat-raised-button color="basic">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+            <button
+              mat-raised-button
+              color="accent"
+              (click)="eliminarNota(nota.idNota)"
+            >
+              <i class="fa-sharp fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
